@@ -5,7 +5,7 @@ use warnings;
 use Term::ANSIColor qw(colored);
 
 use base 'Pod::Text';
-our $VERSION = '0.01';
+our $VERSION = '0.02';
 
 # wrap every line in Ansi color codes
 sub color {
