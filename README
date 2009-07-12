@@ -21,14 +21,14 @@ SEE ALSO
     Pod::Text::Color, Pod::Text, Pod::Simple
 
 AUTHOR
-    Hinrik Ã–rn SigurÃ°sson, hinrik.sig@gmail.com
+    Hinrik Örn Sigurðsson, hinrik.sig@gmail.com
 
     Based on Pod::Text::Color by Russ Allbery rra@stanford.edu.
 
 LICENSE AND COPYRIGHT
     Copyright 1999, 2001, 2004, 2006 by Russ Allbery rra@stanford.edu.
 
-    Copyright (c) 2009, Hinrik Ã–rn SigurÃ°sson hinrik.sig@gmail.com.
+    Copyright (c) 2009, Hinrik Örn Sigurðsson hinrik.sig@gmail.com.
 
     This program is free software; you may redistribute it and/or modify it
     under the same terms as Perl itself. See perlartistic.

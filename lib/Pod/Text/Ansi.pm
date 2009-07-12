@@ -71,6 +71,8 @@ sub wrap {
 1;
 __END__
 
+=encoding UTF-8
+
 =head1 NAME
 
 Pod::Text::Ansi - Convert POD to ANSI-colored text
