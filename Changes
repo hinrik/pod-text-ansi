@@ -1,2 +1,6 @@
+0.02
+    - Fix a problem where formatting would be lost after the first line
+      of a multiline sequence
+
 0.01 Sat Jul 11 21:49:59 EDT 2009
     - Initial release

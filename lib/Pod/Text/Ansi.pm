@@ -7,38 +7,46 @@ use Term::ANSIColor qw(colored);
 use base 'Pod::Text';
 our $VERSION = '0.01';
 
+# wrap every line in Ansi color codes
+sub color {
+    my ($text, @codes) = @_;
+    my @lines = split/\n/, $text;
+    $_ = colored($_, @codes) for @lines;
+    return join "\n", @lines;
+}
+
 # Make level one headings bold.
 sub cmd_head1 {
     my ($self, $attrs, $text) = @_;
     $text =~ s/\s+$//;
-    $self->SUPER::cmd_head1($attrs, colored($text, 'bold'));
+    $self->SUPER::cmd_head1($attrs, color($text, 'bold'));
 }
 
 # Make level two headings bold.
 sub cmd_head2 {
     my ($self, $attrs, $text) = @_;
     $text =~ s/\s+$//;
-    $self->SUPER::cmd_head2($attrs, colored($text, 'bold'));
+    $self->SUPER::cmd_head2($attrs, color($text, 'bold'));
 }
 
 sub cmd_verbatim {
     my ($self, $attrs, $text) = @_;
-    $text = join("\n", map { colored($_, 'yellow') } split(/\n/, $text));
-    $self->SUPER::cmd_verbatim($attrs, colored($text, 'yellow'));
+    $text = join("\n", map { color($_, 'yellow') } split(/\n/, $text));
+    $self->SUPER::cmd_verbatim($attrs, color($text, 'yellow'));
 }
 
 # Fix the various formatting codes.
-sub cmd_c { return colored($_[2], 'yellow')     }
-sub cmd_b { return colored($_[2], 'bold')       }
-sub cmd_e { return colored($_[2], 'green')      }
-sub cmd_f { return colored($_[2], 'cyan')       }
-sub cmd_i { return colored($_[2], 'green')      }
-sub cmd_l { return colored($_[2], 'blue')       }
+sub cmd_c { return color($_[2], 'yellow') }
+sub cmd_b { return color($_[2], 'bold')   }
+sub cmd_e { return color($_[2], 'green')  }
+sub cmd_f { return color($_[2], 'cyan')   }
+sub cmd_i { return color($_[2], 'green')  }
+sub cmd_l { return color($_[2], 'blue')   }
 
 # Output any included code in magenta
 sub output_code {
     my ($self, $code) = @_;
-    $code = colored($code, 'magenta');
+    $code = color($code, 'magenta');
     $self->output ($code);
 }
 
