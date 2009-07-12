@@ -9,5 +9,6 @@ version_from  ('lib/Pod/Text/Ansi.pm');
 license       ('artistic');
 requires      ('Pod::Text'       => '0');
 requires      ('Term::ANSIColor' => '0');
+test_requires ('Test::More'      => '0');
 tests_recursive();
 WriteAll();
