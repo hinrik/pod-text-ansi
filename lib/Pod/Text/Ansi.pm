@@ -15,18 +15,39 @@ sub color {
     return join "\n", @lines;
 }
 
+# the same, but only if the entire text is not already colored
+sub only_color {
+    my ($text, @codes) = @_;
+    return $text if $text =~ /^\e\[/ && $text =~ /\e\[0?m$/;
+    return color($text, @codes);
+}
+
 # Make level one headings bold.
 sub cmd_head1 {
     my ($self, $attrs, $text) = @_;
     $text =~ s/\s+$//;
-    $self->SUPER::cmd_head1($attrs, color($text, 'bold'));
+    $self->SUPER::cmd_head1($attrs, only_color($text, 'bold'));
 }
 
 # Make level two headings bold.
 sub cmd_head2 {
     my ($self, $attrs, $text) = @_;
     $text =~ s/\s+$//;
-    $self->SUPER::cmd_head2($attrs, color($text, 'bold'));
+    $self->SUPER::cmd_head2($attrs, only_color($text, 'bold'));
+}
+
+# Make level three headings bold.
+sub cmd_head3 {
+    my ($self, $attrs, $text) = @_;
+    $text =~ s/\s+$//;
+    $self->SUPER::cmd_head3($attrs, only_color("$text", 'bold'));
+}
+
+# Make level four headings bold.
+sub cmd_head4 {
+    my ($self, $attrs, $text) = @_;
+    $text =~ s/\s+$//;
+    $self->SUPER::cmd_head4($attrs, only_color("$text", 'bold'));
 }
 
 sub cmd_verbatim {
@@ -114,6 +135,19 @@ Hinrik Örn Sigurðsson, L<hinrik.sig@gmail.com>
 
 Based on L<Pod::Text::Color|Pod::Text::Color> by Russ Allbery
 L<rra@stanford.edu>.
+
+=head1 CAVEATS
+
+It currently doesn't respect some forms of nesting. Example:
+
+ I<'italic', C<'italic code'>, 'italic'>.
+
+Contrary to what the three terms above say, they will be rendered as italic
+only, then code only, then normal, respectively.
+
+Non-overlapping nesting such as the following does work, though:
+
+ I< C<italic code> >
 
 =head1 LICENSE AND COPYRIGHT
 

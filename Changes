@@ -1,3 +1,7 @@
+0.03
+    - Style change: Make =head1 to =head4 headings bold, but only if the
+      heading isn't already colored for some other reason
+
 0.02 Sun Jul 12 19:56:37 EDT 2009
     - Fix a problem where formatting would be lost after the first line
       of a multiline sequence
