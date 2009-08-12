@@ -1,3 +1,6 @@
+0.04
+    - Depend on Pod::Text 3.13
+
 0.03 Mon Jul 13 17:14:42 EDT 2009
     - Style change: Make =head1 to =head4 headings bold, but only if the
       heading isn't already colored for some other reason
