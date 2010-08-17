@@ -1,3 +1,6 @@
+{{$NEXT}}
+    - Use Dist::Zilla
+
 0.04 Wed Aug 12 17:37:58 GMT 2009
     - Depend on Pod::Text 3.13
 
