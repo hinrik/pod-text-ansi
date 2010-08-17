@@ -1,7 +1,7 @@
 package Pod::Text::Ansi;
 
 use strict;
-use warnings;
+use warnings FATAL => 'all';
 use Term::ANSIColor qw(colored);
 
 use base 'Pod::Text';
